@@ -1,0 +1,183 @@
+Automobile tent - Dolores, Morgadan : 4
+http://www.freepatentsonline.com/2204432.html
+frame: 31
+collaps: 4
+canop: 3
+cloth: 3
+
+Portable camping outfit - Alonzo, Hastings Robe : 4
+http://www.freepatentsonline.com/2054673.html
+frame: 39
+collaps: 10
+canop: 10
+tent pole: 1
+
+CAMPING TENT APPLICABLE TO A TWO-WHEELED VEHICLE - DETTO PIETRO S.R. : 3
+http://www.freepatentsonline.com/EP0139070A3.html
+bicycle: 16
+frame: 10
+support pole: 2
+
+Automobile dressing beach tent - Rideout, Raymond  : 3
+http://www.freepatentsonline.com/2027551.html
+frame: 74
+collaps: 13
+cloth: 4
+
+Electronic Car Umbrella - Alshamrani, Othman Mohamme : 3
+http://www.freepatentsonline.com/y2017/0113529.html
+mirror: 6
+reflect: 5
+cloth: 1
+collaps: 1
+
+Collapsible camping structure - Bromschwig, Fred  : 2
+http://www.freepatentsonline.com/2239951.html
+frame: 38
+collaps: 7
+
+Shelter attachment for motor vehicles - Pratt, Ward Carro : 2
+http://www.freepatentsonline.com/2315680.html
+frame: 3
+shade: 1
+
+PORTABLE LODGING SPACE. - Hentila, Tau : 2
+http://www.freepatentsonline.com/EP0081483A1.html
+collaps: 3
+frame: 2
+
+Automobile dressing tent - Schmeiser, Theodore  : 2
+http://www.freepatentsonline.com/2066078.html
+frame: 28
+hub: 5
+collaps: 1
+
+Automobile tent - Creasy, Luther  : 2
+http://www.freepatentsonline.com/2299382.html
+frame: 77
+collaps: 36
+
+Folding tent house - Sink, Wilbert  : 1
+http://www.freepatentsonline.com/2057252.html
+canop: 7
+
+Method and mechanism for putting up a tent - Holtkamp, Egbert Bere : 1
+http://www.freepatentsonline.com/EP1411189A3.html
+tent pole: 1
+
+TRANSPORTABLE SHELTER STRUCTURE - VANBERELLA LIMIT : 1
+http://www.freepatentsonline.com/EP0072227A3.html
+frame: 13
+
+Tent Kit For A Flatbed Trailer - SCHWEBACH GARY  : 1
+http://www.freepatentsonline.com/y2016/0160522.html
+frame: 36
+
+FPO IP Research &amp; Communiti : 0
+http://www.freepatentsonline.com/1483741.html
+
+Tent - Patricia, Maclean Agn : 0
+http://www.freepatentsonline.com/1751518.html
+
+Tourist&#039;s outfit - Frisby, William  : 0
+http://www.freepatentsonline.com/1825183.html
+
+Collapsible and portable lodge - Pooch, William  : 0
+http://www.freepatentsonline.com/1862425.html
+
+Adjustable trunk-rack camping outfit - Long, Thomas  : 0
+http://www.freepatentsonline.com/1593583.html
+
+Combined tent and garage - Asher, Oscar  : 0
+http://www.freepatentsonline.com/1801711.html
+
+FPO IP Research &amp; Communiti : 0
+http://www.freepatentsonline.com/1644406.html
+
+Portable tent - Belanger, Paul  : 0
+http://www.freepatentsonline.com/1590072.html
+
+Automobile attachment - Leech, John  : 0
+http://www.freepatentsonline.com/1427749.html
+
+Tent for use with automobiles - King, Percival  : 0
+http://www.freepatentsonline.com/1774017.html
+
+Combined automobile cover and tent - Harry, Sebe : 0
+http://www.freepatentsonline.com/1784115.html
+
+Camp attachment for automobiles - Will, Victor  : 0
+http://www.freepatentsonline.com/1966023.html
+
+Camping outfit - Lang, Edward  : 0
+http://www.freepatentsonline.com/1855296.html
+
+Individual and combination auto sleeper tent - Fred, Ma : 0
+http://www.freepatentsonline.com/1949751.html
+
+Collapsible shelter device for motor vehicles - Sherbinin, William DE.  : 0
+http://www.freepatentsonline.com/2806478.html
+
+Device for stretching the roof of a tent - Schaefer, Peter  : 0
+http://www.freepatentsonline.com/1507003.html
+
+Canopy - Fincher, Walter  : 0
+http://www.freepatentsonline.com/1827427.html
+
+Dressing tent for vehicles - Bell, Joseph  : 0
+http://www.freepatentsonline.com/1841002.html
+
+Portable camping outfit - James, Coop : 0
+http://www.freepatentsonline.com/1790134.html
+
+Folding bed for automobiles - Mcmanus, Joseph  : 0
+http://www.freepatentsonline.com/1622462.html
+
+Automobile dressing room - Lundstrom, William  : 0
+http://www.freepatentsonline.com/1741424.html
+
+Automobile garage and touring tent - Noble, Victor  : 0
+http://www.freepatentsonline.com/1527908.html
+
+Traveling kit - Thomas, Jessee  : 0
+http://www.freepatentsonline.com/1535357.html
+
+Folding tent - Thurtle, Fred  : 0
+http://www.freepatentsonline.com/1623507.html
+
+Portable shelter or tent for attachment to automobiles - Ednott, Crooke Cyr : 0
+http://www.freepatentsonline.com/1803237.html
+
+Camping installation - Robert, Verdini Jean Louis Jo : 0
+http://www.freepatentsonline.com/1748809.html
+
+Automobile tent - Hauber, Alfred  : 0
+http://www.freepatentsonline.com/1834489.html
+
+Canoe tent - Kemper, Edward  : 0
+http://www.freepatentsonline.com/1531749.html
+
+Camping equipment for employment in connection with motor vehicles - John, Barnes Lawren : 0
+http://www.freepatentsonline.com/1836060.html
+
+Collapsible dressing cabinet - Hyrup, Hans  : 0
+http://www.freepatentsonline.com/1935948.html
+
+null : 0
+http://www.freepatentsonline.com/WO2005005184A3.html
+
+Tent - O&#039;neal, Edwin  : 0
+http://www.freepatentsonline.com/1410830.html
+
+FPO IP Research &amp; Communiti : 0
+http://www.freepatentsonline.com/2733951.html
+
+Tent - Cunningham, Martin  : 0
+http://www.freepatentsonline.com/1411711.html
+
+Camping outfit - Canfield, Benjamin  : 0
+http://www.freepatentsonline.com/1499972.html
+
+Canoe support and shelter - Kemper, Edward  : 0
+http://www.freepatentsonline.com/1520756.html
+
