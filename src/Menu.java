@@ -39,113 +39,178 @@ import javax.swing.JTable;
 import java.awt.Dimension;
 
 public class Menu extends JFrame {
-
 	private Project project;
-	private JPanel contentPane;
-	private JTextField txtfldNewClassName;
-
-	/**
-	 * Launch the application.
-	 */
 	
+	private JPanel mainPanel;
+	
+	private JTabbedPane tabbedPane;
+	
+	private ResultsPanel resultsPanel;
+	private TermsPanel termsPanel;
+	private ClassesPanel classesPanel;
+	private ProjectsPanel projectsPanel;
 
+	
+	
 	/**
 	 * Create the frame.
 	 */
 	public Menu() {
 		project = new Project();
 		
+		project.addClass("a63b31/11");
+		//project.addClass("002", "Two", 2);
+		//project.addClass("003", "Three", 3);
+		//project.addClass("004", "Four", 4);
+		//project.addClass("005", "Five", 5);
 		
-		//String[] classListColumnNames = {"ID", "Name", "# of Patents"};
-		//Object[][] classListData = {
-		//	    {"001", "One", new Integer(1)},
-		//	    {"002", "Two", new Integer(2)},
-		//	    {"003", "Three", new Integer(3)},
-		//	    {"004", "Four", new Integer(4)},
-		//	    {"005", "Five", new Integer(5)}
-		//};
+		mainPanel = new JPanel();
+		
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		
+		resultsPanel = new ResultsPanel();
+		termsPanel = new TermsPanel();
+		classesPanel = new ClassesPanel();
+		projectsPanel = new ProjectsPanel();
 		
 		
 		
-		//getContentPane().setVisible(false);
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 547, 361);
 		
-		// Panels
-		contentPane = new JPanel();
-		
-		// Components
-		
 		
 		// Borders and layouts
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new CardLayout(0, 0));
-		
-		
-		
-		
-		// Main Panel
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		JPanel resultsPanel = new JPanel();
-		resultsPanel.setLayout(null);
-		JPanel termsPanel = new JPanel();
-		
-		
-		JPanel classesPanel = new JPanel();
-		classesPanel.setLayout(new BoxLayout(classesPanel, BoxLayout.X_AXIS));
-		
-		JTable classListTable = new JTable(classListData, classListColumnNames);
-		JScrollPane classListPane = new JScrollPane(classListTable);
-		//classesPanel.add(classListTable);
-		classesPanel.add(classListPane);
+		mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		mainPanel.setLayout(new CardLayout(0, 0));
 		
 		tabbedPane.addTab("Results", null, resultsPanel, null);
 		tabbedPane.addTab("Terms", null, termsPanel, null);
 		tabbedPane.addTab("Classes", null, classesPanel, null);
-		
-		setContentPane(contentPane);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		JPanel addClassPanel = new JPanel();
-		classesPanel.add(addClassPanel);
-		
-		txtfldNewClassName = new JTextField();
-		addClassPanel.add(txtfldNewClassName);
-		txtfldNewClassName.setColumns(10);
-		
-		JButton btnAddClass = new JButton("Add Class");
-		btnAddClass.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String newClassName = txtfldNewClassName.getText();
-				
-			}
-		});
-		addClassPanel.add(btnAddClass);
-		
-		
-		JButton btnDiscover = new JButton("Discover");
-		addClassPanel.add(btnDiscover);
-		
-		contentPane.add(tabbedPane, "name_421621166267166");
-		
-		JPanel projectsPanel = new JPanel();
 		tabbedPane.addTab("Projects", null, projectsPanel, null);
 		
+		mainPanel.add(tabbedPane, "name_421621166267166");
+		
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("New tab", null, panel, null);
+		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		panel.add(scrollPane);
+		
+		JPanel panel_1 = new JPanel();
+		panel.add(panel_1);
+		
+		setContentPane(mainPanel);
+		
+		
+	}
+	
+	
+	
+	private class ResultsPanel extends JPanel {
+		
+		/**
+		 * Constructor
+		 */
+		public ResultsPanel() {
+			//setLayout(null);
+		}
+	}
+	
+	private class TermsPanel extends JPanel {
+		
+		/**
+		 * Constructor
+		 */
+		public TermsPanel() {
+			//setLayout(new BoxLayout(termsPanel, BoxLayout.X_AXIS));
+		}
+	}
+	
+	private class ClassesPanel extends JPanel {
+		// Variables
+		String[] classListColumnNames = {"Class ID", "Class Name", "# of patents"};
+		
+		Object[][] classListData;
+		
+		
+		// Components
+		JTextField txtfldNewClassName;
+		JTable classListTable;
+		JScrollPane classListPane;
+		JButton btnAddClass;
+		JButton btnDiscover;
+		
+		// JPanels
+		JPanel addClassPanel = new JPanel();
+
+		/**
+		 * Constructor
+		 */
+		public ClassesPanel() {
+			classListData = project.getClassData();
+			
+			txtfldNewClassName = new JTextField();
+			classListTable = new JTable(classListData, classListColumnNames);
+			classListPane = new JScrollPane(classListTable);
+			btnAddClass = new JButton("Add Class");
+			btnDiscover = new JButton("Discover");
+			
+			setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+			
+			txtfldNewClassName.setColumns(10);
+			
+			
+			
+			
+			 
+			//classListTable.setFillsViewportHeight(true);
+			
+			btnAddClass.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					project.addClass(txtfldNewClassName.getText());
+					update();
+				}
+			});
+			
+			addClassPanel.add(txtfldNewClassName);
+			addClassPanel.add(btnAddClass);
+			addClassPanel.add(btnDiscover);
+
+			add(classListPane);
+			add(addClassPanel);
+		}
+		
+		public void update() {
+			removeAll();
+			
+			classListData = project.getClassData();
+			classListTable = new JTable(classListData, classListColumnNames);
+			classListPane = new JScrollPane(classListTable);
+			add(classListPane);
+			add(addClassPanel);
+			
+			this.revalidate();
+			this.repaint();
+		}
+	}
+	
+	private class ProjectsPanel extends JPanel {
 		JButton btnNewProject = new JButton("New Project");
-		btnNewProject.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				project = new Project();
-			}
-		});
-		projectsPanel.add(btnNewProject);
+		
+		/**
+		 * Constructor
+		 */
+		public ProjectsPanel() {
+			btnNewProject.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					project = new Project();
+				}
+			});
+			
+			add(btnNewProject);
+		}
 	}
 }
