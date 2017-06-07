@@ -15,9 +15,9 @@ public class Project {
 		return classes;
 	}
 	
-	public void addClass(String classID) {
+	public void addClass(String classID, String className) {
 		
-		classes.add(new Class(classID));
+		classes.add(new Class(classID, className));
 	}
 	
 	public Object[][] getClassData() {

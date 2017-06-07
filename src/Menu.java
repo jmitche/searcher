@@ -58,7 +58,7 @@ public class Menu extends JFrame {
 	public Menu() {
 		project = new Project();
 		
-		project.addClass("a63b31/11");
+		//project.addClass("a63b31/11");
 		//project.addClass("002", "Two", 2);
 		//project.addClass("003", "Three", 3);
 		//project.addClass("004", "Four", 4);
@@ -137,6 +137,7 @@ public class Menu extends JFrame {
 		
 		
 		// Components
+		JTextField txtfldNewClassID;
 		JTextField txtfldNewClassName;
 		JTable classListTable;
 		JScrollPane classListPane;
@@ -152,6 +153,7 @@ public class Menu extends JFrame {
 		public ClassesPanel() {
 			classListData = project.getClassData();
 			
+			txtfldNewClassID = new JTextField();
 			txtfldNewClassName = new JTextField();
 			classListTable = new JTable(classListData, classListColumnNames);
 			classListPane = new JScrollPane(classListTable);
@@ -160,6 +162,7 @@ public class Menu extends JFrame {
 			
 			setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 			
+			txtfldNewClassID.setColumns(10);
 			txtfldNewClassName.setColumns(10);
 			
 			
@@ -170,11 +173,22 @@ public class Menu extends JFrame {
 			
 			btnAddClass.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					project.addClass(txtfldNewClassName.getText());
-					update();
+					boolean found = false;
+					for (int i = 0; i < project.getClasses().size(); i++) {
+						if (txtfldNewClassID.getText().equals(project.getClasses().elementAt(i).getData()[0])) {
+							found = true;
+							System.out.println("Found");
+						}
+					}
+					
+					if (!found) {
+						project.addClass(txtfldNewClassID.getText(), txtfldNewClassName.getText());
+						update();
+					}
 				}
 			});
 			
+			addClassPanel.add(txtfldNewClassID);
 			addClassPanel.add(txtfldNewClassName);
 			addClassPanel.add(btnAddClass);
 			addClassPanel.add(btnDiscover);
@@ -192,7 +206,7 @@ public class Menu extends JFrame {
 			add(classListPane);
 			add(addClassPanel);
 			
-			this.revalidate();
+			//this.revalidate();
 			this.repaint();
 		}
 	}
