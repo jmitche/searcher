@@ -2,6 +2,7 @@ import java.util.Vector;
 
 public class Project {
 	private Vector<Class> classes = new Vector<Class>();
+	private Vector<Patent> patents = new Vector<Patent>();
 	
 	
 	/**
@@ -18,6 +19,12 @@ public class Project {
 	public void addClass(String classID, String className) {
 		
 		classes.add(new Class(classID, className));
+		System.out.println("COPYING");
+		Vector<String> patentURLs = classes.elementAt(classes.size() - 1).getPatentURLs();
+		
+		for (int i = 0; i < /*patentURLs.size()*/ 10; i++) {
+			patents.add(new Patent(patentURLs.elementAt(i)));
+		}
 	}
 	
 	public Object[][] getClassData() {

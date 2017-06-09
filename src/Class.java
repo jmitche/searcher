@@ -66,12 +66,14 @@ public class Class {
 	        	        br = new BufferedReader(new InputStreamReader(is));
 	        	        
 	        	        boolean done2 = false;
+	        	        int num = 1;
 	        	        while (!done2) {
 	        	        	line = br.readLine();
 	        	        	if (line == null) {
 	        	        		done2 = true;
 	        	        	}
 	        	        	else if (line.contains("legacy-container")) {
+	        	        		//System.out.println(num + " !!!!!!!!!!!!!!!");
 	        	        		while (!(line = br.readLine()).contains("</table>")) {
 	        	        			if (line.contains("href")) {
 	        	        				String suburl = line.substring(line.indexOf('=') + 3, line.indexOf('>') - 1);
@@ -79,9 +81,11 @@ public class Class {
 	        	        				patentURLs.add("http://www.freepatentsonline.com/" + suburl);
 	        	        				done2 = true;
 	        	        				System.out.println(patentURLs.size() + ": " + patentURLs.get(patentURLs.size() - 1));
+	        	        				
 	        	        			}
 	        	        		}
 	        	        	}
+	        	        	num++;
 	        	        }
 	            	}
 		        	
@@ -102,6 +106,10 @@ public class Class {
 		data[2] = resultCount;
 		
 		return data;
+	}
+	
+	public Vector<String> getPatentURLs() {
+		return patentURLs;
 	}
 	
 	

@@ -75,8 +75,6 @@ public class Menu extends JFrame {
 		
 		
 		
-		
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 547, 361);
 		
@@ -115,7 +113,7 @@ public class Menu extends JFrame {
 		 * Constructor
 		 */
 		public ResultsPanel() {
-			//setLayout(null);
+			
 		}
 	}
 	
