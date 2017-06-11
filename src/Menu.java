@@ -108,14 +108,50 @@ public class Menu extends JFrame {
 	
 	
 	private class ResultsPanel extends JPanel {
+		// Variables
+		String[] patentListColumnNames = {"#","Title", "Abstract"};
 		
+		Object[][] patentListData;
+		
+		
+		// Components
+		JTable patentListTable;
+		JScrollPane patentListPane;
+
+		// JPanels
+		//JPanel addClassPanel = new JPanel();
+
 		/**
 		 * Constructor
 		 */
 		public ResultsPanel() {
+			patentListData = project.getPatentData();
 			
+			patentListTable = new JTable(patentListData, patentListColumnNames);
+			patentListPane = new JScrollPane(patentListTable);
+			
+			setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+
+			 
+			//classListTable.setFillsViewportHeight(true);
+
+
+			add(patentListPane);
+		}
+		
+		public void update() {
+			removeAll();
+			
+			patentListData = project.getPatentData();
+			patentListTable = new JTable(patentListData, patentListColumnNames);
+			patentListPane = new JScrollPane(patentListTable);
+			add(patentListPane);
+			
+			//this.revalidate();
+			this.repaint();
 		}
 	}
+	
 	
 	private class TermsPanel extends JPanel {
 		
@@ -171,17 +207,10 @@ public class Menu extends JFrame {
 			
 			btnAddClass.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					boolean found = false;
-					for (int i = 0; i < project.getClasses().size(); i++) {
-						if (txtfldNewClassID.getText().equals(project.getClasses().elementAt(i).getData()[0])) {
-							found = true;
-							System.out.println("Found");
-						}
-					}
-					
-					if (!found) {
+					if (!txtfldNewClassID.getText().replaceAll("\\s", "").equals("")) {
 						project.addClass(txtfldNewClassID.getText(), txtfldNewClassName.getText());
 						update();
+						resultsPanel.update();
 					}
 				}
 			});

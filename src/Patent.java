@@ -22,6 +22,7 @@ public class Patent {
 		InputStream is = null;
 		BufferedReader br = null;
 	    String line;
+	    boolean done = false;
 	    
 		try {
 			url = new URL(urlString);
@@ -29,24 +30,55 @@ public class Patent {
 			br = new BufferedReader(new InputStreamReader(is));
 			
 			/// Main
+			// ID number
+			done = false;
+			while (!(line = br.readLine()).contains("<input type=\"hidden\" name=\"patent\"")) {
+
+			}
+			
+			numberStr = line.substring(line.indexOf("ue=\"") + 4, line.indexOf("\"/>"));
+			//if (titleStr == "")
+				//titleStr = "no title";
+			//System.out.println(numberStr);
+			
 			// Title - 207
-			boolean done = false;
+			done = false;
 			while (!(line = br.readLine()).contains("<input type=\"hidden\" name=\"title\"")) {
 
 			}
 			
 			titleStr = line.substring(line.indexOf("ue=\"") + 4, line.indexOf("\"/>"));
+			//if (titleStr == "")
+				//titleStr = "no title";
 			System.out.println(titleStr);
 			
-			// ID
-			
-			// File Date
-			
-			// Publish Date
-			
-			
 			/// Biblio
-			// Abstract
+			// Abstract - <!--	Abstract  -->
+			done = false;
+			while (!(line = br.readLine()).contains("<!--\tAbstract  -->")) {
+				
+			}
+			//System.out.println(line);
+			done = false;
+			
+			int num = 0;
+			while (!done) {
+				line = br.readLine();
+				if (num == 3) {
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					done = true;
+				}
+				else if (line.contains("<div class=\"span"))
+					abstractStr = line.substring(line.indexOf('>') + 1, line.indexOf("</"));
+				System.out.println(line);
+				num++;
+			}
+			
+			if (abstractStr == null)
+				abstractStr = "ABSTRACT";
+			
+			
+			//System.out.println(abstractStr);
 			
 			// Images
 			
@@ -147,5 +179,15 @@ public class Patent {
 		
 		
 		
+	}
+	
+	public Object[] getData() {
+		Object[] data = new Object[3];
+		
+		data[0] = numberStr;
+		data[1] = titleStr;
+		data[2] = abstractStr;
+		
+		return data;
 	}
 }

@@ -32,6 +32,7 @@ public class Class {
 			is = url.openStream();  // throws an IOException
 			br = new BufferedReader(new InputStreamReader(is));
 			
+			// Read page
 			boolean done = false;
 	        while (!done) {
 				line = br.readLine();
@@ -48,7 +49,7 @@ public class Class {
 	        		Vector<String> resultPageURLs = new Vector<String>();
 	        		
 	        		// Generate resultPageURLs
-	        		for (int i = 0; i < resultCount / 50 + resultCount % 50; i++) {
+	        		for (int i = 0; i < resultCount / 50 + resultCount % 50 /*1*/; i++) {
 	        			if (i == 0)
 	        	    		resultPageURLs.add(searchURL);
 	        	    		else {
@@ -60,13 +61,13 @@ public class Class {
 		        		
 		        		
 	        		// Fetch URLs from all results pages
+	        		int num = 1;
 	            	for (int i = 0; i < resultPageURLs.size(); i++) {
 	            		url = new URL(resultPageURLs.get(i));
 	        	        is = url.openStream();  // throws an IOException
 	        	        br = new BufferedReader(new InputStreamReader(is));
 	        	        
 	        	        boolean done2 = false;
-	        	        int num = 1;
 	        	        while (!done2) {
 	        	        	line = br.readLine();
 	        	        	if (line == null) {
@@ -74,18 +75,17 @@ public class Class {
 	        	        	}
 	        	        	else if (line.contains("legacy-container")) {
 	        	        		//System.out.println(num + " !!!!!!!!!!!!!!!");
-	        	        		while (!(line = br.readLine()).contains("</table>")) {
+	        	        		while (!(line = br.readLine()).contains("</table>")/* && num < 11*/) {
 	        	        			if (line.contains("href")) {
 	        	        				String suburl = line.substring(line.indexOf('=') + 3, line.indexOf('>') - 1);
 	        	        				
 	        	        				patentURLs.add("http://www.freepatentsonline.com/" + suburl);
 	        	        				done2 = true;
 	        	        				System.out.println(patentURLs.size() + ": " + patentURLs.get(patentURLs.size() - 1));
-	        	        				
+	        	        				num++;
 	        	        			}
 	        	        		}
 	        	        	}
-	        	        	num++;
 	        	        }
 	            	}
 		        	
