@@ -13,11 +13,25 @@ import org.jsoup.select.Elements;
 
 public class Patent {
 	URL url;
-	String numberStr;
-	String titleStr;
+	String number;
+	String title;
 	String abstractStr;
-	String claimsStr;
-	String descriptionStr;
+	String inventorsStr;
+	String applicationNumber;
+	String publicationDate;
+	String filingDate;
+	String assignee;
+	String primaryClass;
+	String otherClassesStr;
+	String internationalClassesStr;
+	String eclaClassesStr;
+	String fieldOfSearchStr;
+	String pdfUrlStr;
+	String primaryExaminer;
+	String assistantExaminer;
+	String attorneyAgentOrFirm;
+	String claims;
+	String description;
 	
 	
 	
@@ -47,7 +61,7 @@ public class Patent {
 			
 			elements = doc.select("form[name=biblio]");
 			Elements elements3 = elements.select("input[name=patent]");
-			numberStr = elements3.first().attr("value");
+			number = elements3.first().attr("value");
 			
 			
 			elements = doc.select("div[class=disp_doc2]");
@@ -70,256 +84,72 @@ public class Patent {
 					
 				}
 				else if (eTitle.equals("Title:")) {
-					titleStr = eText;
+					title = eText;
 				}
 				else if (eTitle.equals("Abstract:")) {
 					abstractStr = eText;
 				}
+				else if (eTitle.equals("Representative Image:")) {  // Representative Images
+					// = eText;
+				}
 				else if (eTitle.equals("Inventors:")) {
-					 = eText;
+					inventorsStr = eText;
 				}
 				else if (eTitle.equals("Application Number:")) {
-					 = eText;
+					applicationNumber = eText;
 				}
 				else if (eTitle.equals("Publication Date:")) {
-					 = eText;
+					publicationDate = eText;
 				}
 				else if (eTitle.equals("Filing Date:")) {
-					 = eText;
+					filingDate = eText;
 				}
-				else if (eTitle.equals("Asignee:")) {
-					 = eText;
+				else if (eTitle.equals("Assignee:")) {
+					assignee = eText;
 				}
 				else if (eTitle.equals("Primary Class:")) {
-					 = eText;
+					primaryClass = eText;
 				}
-				else if (eTitle.equals("")) { // Other classes
-					 = eText;
+				else if (eTitle.equals("Other Classes:")) {
+					otherClassesStr = eText;
 				}
 				else if (eTitle.equals("International Classes:")) {
-					 = eText;
+					internationalClassesStr = eText;
 				}
-				else if (eTitle.equals("")) {
-					 = eText;
+				else if (eTitle.equals("European Classes:")) {
+					eclaClassesStr = eText;
+				}
+				else if (eTitle.equals("Field of Search:")) {
+					fieldOfSearchStr = eText;
+				}
+				else if (eTitle.equals("View Patent Images:")) {  // PDF
+					pdfUrlStr = elements2.select("a[href]").attr("abs:href");
+					System.out.println(pdfUrlStr);
+				}
+				else if (eTitle.equals("Primary Examiner:")) {
+					primaryExaminer = eText;
+				}
+				else if (eTitle.equals("Assistant Examiner:")) {
+					assistantExaminer = eText;
+				}
+				else if (eTitle.equals("Attorney, Agent or Firm:")) {
+					attorneyAgentOrFirm = eText;
+				}
+				else if (eTitle.equals("Claims:")) {
+					claims = eText;
+				}
+				else if (eTitle.equals("Description:")) {
+					description = eText;
 				}
 				
-				
-				
-				
-				
-				
-				// Images
-				
-				// Assignee
-				
-				
-				
-				// Attorneys/Agents
-				
-				// App Num
-				
-				// Pub Date
-				
-				// File Date
-				
-				// Referenced by
-				
-				// Primary Class
-				
-				// International Classes
-				
-				// Field of Search
-				
-				// Primary Examiner
 
-				
-				/// Claims
-				
-				/// Description
-				
-				/// Citations
-				
-				/// PDF
-				
-				
 				
 				//System.out.println(eTitle);
 				//System.out.println(eText);
 			}
 			
-			System.out.println(numberStr + ": " + titleStr);
-			//System.out.println(doc.toString());
-			
-			//Elements elements = doc.select("div[class=well well-small]");
-			//System.out.println(elements.size());
-			//System.out.println(elements.first().toString());
-			
-			
-			
-			//Elements elements = doc.select("div[class=legacy-container]");
-			//System.out.println("# of elements: " + elements.size());
-			//System.out.println(elements.get(0).select("a[href]").attr("abs:href").toString());
-			
-		
+			System.out.println(number + ": " + title);
 
-			//done = false;
-			//while (!(line = br.readLine()).contains("<input type=\"hidden\" name=\"patent\"")) {
-
-			//}
-			
-			//numberStr = line.substring(line.indexOf("ue=\"") + 4, line.indexOf("\"/>"));
-			//if (titleStr == "")
-				//titleStr = "no title";
-			//System.out.println(numberStr);
-			
-			// Title - 207
-			//done = false;
-			//while (!(line = br.readLine()).contains("<input type=\"hidden\" name=\"title\"")) {
-
-			//}
-			
-			//titleStr = line.substring(line.indexOf("ue=\"") + 4, line.indexOf("\"/>"));
-			//if (titleStr == "")
-				//titleStr = "no title";
-			//System.out.println(titleStr);
-			
-			/// Biblio
-			// Abstract - <!--	Abstract  -->
-			//done = false;
-			//while (!(line = br.readLine()).contains("<!--\tAbstract  -->")) {
-				
-			//}
-			//System.out.println(line);
-			//done = false;
-			
-			//int num = 0;
-			//while (!done) {
-			//	line = br.readLine();
-			//	if (line == null) {
-					//System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			//		done = true;
-			//	}
-			//	else if (line.contains("<div class=\"disp_elm_text\">")) {
-			//		line = br.readLine();
-			//		//System.out.println(line);
-			//		
-			//		// Delete </div> at end
-			//		line = line.replaceAll("</div>", "");
-			//		
-			//		// Delete leading and trailing whitespaces
-			//		line = line.trim();
-					
-					
-					
-					
-					
-					// Delete text augmentations (highlight, bold, etc...)
-			//		abstractStr = line;
-					//.substring(1, 3 /*line.indexOf("</")*/);
-			//		done = true;
-			//	}
-					
-				//System.out.println(line);
-			//	num++;
-			//}
-			
-			//if (abstractStr == null)
-			//	abstractStr = "ABSTRACT";
-			
-			
-			//System.out.println(abstractStr);
-			
-			// Images
-			
-			// Assignee
-			
-			// Inventors
-			
-			// Attorneys/Agents
-			
-			// App Num
-			
-			// Pub Date
-			
-			// File Date
-			
-			// Referenced by
-			
-			// Primary Class
-			
-			// International Classes
-			
-			// Field of Search
-			
-			// Primary Examiner
-
-			
-			/// Claims
-			
-			/// Description
-			
-			/// Citations
-			
-			/// PDF
-			
-			
-/*
-			boolean done = false;
-	        while (!done) {
-				line = br.readLine();
-				if (line == null)
-					done = true;
-				else if (line.contains("Matches 1 - 50 out of")) {
-					String count = line.substring(line.indexOf('f') + 1, line.indexOf('<') - 1);
-	        		count = count.replaceAll(" ","");
-	        		
-	        		//System.out.println(count);
-	        		resultCount = Integer.parseInt(count);
-	        		System.out.println(resultCount);
-	        		
-	        		Vector<String> resultPageURLs = new Vector<String>();
-	        		
-	        		// Generate resultPageURLs
-	        		for (int i = 0; i < resultCount / 50 + resultCount % 50; i++) {
-	        			if (i == 0)
-	        	    		resultPageURLs.add(searchURL);
-	        	    		else {
-	        	    			//edit urlString
-	        	    			resultPageURLs.add(searchURL.replace("p=1", "p=" + (i + 1)));
-	        	    			//add urlString
-	        	    		}
-	        		}
-		        		
-		        		
-	        		// Fetch URLs from all results pages
-	            	for (int i = 0; i < resultPageURLs.size(); i++) {
-	            		url = new URL(resultPageURLs.get(i));
-	        	        is = url.openStream();  // throws an IOException
-	        	        br = new BufferedReader(new InputStreamReader(is));
-	        	        
-	        	        boolean done2 = false;
-	        	        while (!done2) {
-	        	        	line = br.readLine();
-	        	        	if (line == null) {
-	        	        		done2 = true;
-	        	        	}
-	        	        	else if (line.contains("legacy-container")) {
-	        	        		while (!(line = br.readLine()).contains("</table>")) {
-	        	        			if (line.contains("href")) {
-	        	        				String suburl = line.substring(line.indexOf('=') + 3, line.indexOf('>') - 1);
-	        	        				
-	        	        				patentURLs.add("http://www.freepatentsonline.com/" + suburl);
-	        	        				done2 = true;
-	        	        				System.out.println(patentURLs.size() + ": " + patentURLs.get(patentURLs.size() - 1));
-	        	        			}
-	        	        		}
-	        	        	}
-	        	        }
-	            	}
-		        	
-		        	done = true;
-	        	}
-	        }*/
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -330,13 +160,47 @@ public class Patent {
 		
 	}
 	
-	public Object[] getData() {
-		Object[] data = new Object[3];
+	public Object[] getData(Vector<String> elements) {
+		Vector<Object> dataObj = new Vector<Object>();
+		Object[] data = new Object[elements.size()];
 		
-		data[0] = numberStr;
-		data[1] = titleStr;
+		for (int i = 0; i < elements.size(); i++) {
+			if (elements.elementAt(i).equals("#")) {
+				data[i] = number;
+			}
+			else if (elements.elementAt(i).equals("Title")) {
+				data[i] = title;
+			}
+			else if (elements.elementAt(i).equals("Abstract")) {
+				data[i] = abstractStr;
+			}
+			else if (elements.elementAt(i).equals("Claims")) {
+				data[i] = claims;
+			}
+			else if (elements.elementAt(i).equals("Description")) {
+				data[i] = description;
+			}
+		}
+		/*
+		data[0] = number;
+		data[1] = title;
 		data[2] = abstractStr;
-		
+		data[3] = inventorsStr;
+		data[4] = applicationNumber;
+		data[5] = publicationDate;
+		data[6] = filingDate;
+		data[7] = assignee;
+		data[8] = primaryClass;
+		data[9] = otherClassesStr;
+		data[10] = internationalClassesStr;
+		data[11] = eclaClassesStr;
+		data[12] = fieldOfSearchStr;
+		data[13] = primaryExaminer;
+		data[14] = assistantExaminer;
+		data[15] = attorneyAgentOrFirm;
+		data[16] = claims;
+		data[17] = description;
+		*/
 		return data;
 	}
 }

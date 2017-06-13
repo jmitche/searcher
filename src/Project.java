@@ -48,11 +48,11 @@ public class Project {
 		return classData;
 	}
 	
-	public Object[][] getPatentData() {
+	public Object[][] getPatentData(Vector<String> elements) {
 		Object[][] patentData = new Object[patents.size()][1];
 		System.out.println(patents.size());
 		for (int i = 0; i < patents.size(); i++) {
-			patentData[i] = patents.elementAt(i).getData();
+			patentData[i] = patents.elementAt(i).getData(elements);
 		}
 		
 		return patentData;
