@@ -180,6 +180,45 @@ public class Patent {
 			else if (elements.elementAt(i).equals("Description")) {
 				data[i] = description;
 			}
+			else if (elements.elementAt(i).equals("Inventors")) {
+				data[i] = inventorsStr;
+			}
+			else if (elements.elementAt(i).equals("Publication Date")) {
+				data[i] = publicationDate;
+			}
+			else if (elements.elementAt(i).equals("Filing Date")) {
+				data[i] = filingDate;
+			}
+			else if (elements.elementAt(i).equals("Assignee")) {
+				data[i] = assignee;
+			}
+			else if (elements.elementAt(i).equals("Primary Class")) {
+				data[i] = primaryClass;
+			}
+			else if (elements.elementAt(i).equals("Other Classes")) {
+				data[i] = otherClassesStr;
+			}
+			else if (elements.elementAt(i).equals("International Classes")) {
+				data[i] = internationalClassesStr;
+			}
+			else if (elements.elementAt(i).equals("ECLA Classes")) {
+				data[i] = eclaClassesStr;
+			}
+			else if (elements.elementAt(i).equals("Field of Search")) {
+				data[i] = fieldOfSearchStr;
+			}
+			else if (elements.elementAt(i).equals("Primary Examiner")) {
+				data[i] = primaryExaminer;
+			}
+			else if (elements.elementAt(i).equals("Assistant Examiner")) {
+				data[i] = assistantExaminer;
+			}
+			else if (elements.elementAt(i).equals("Attorney, Agent, or Firm")) {
+				data[i] = attorneyAgentOrFirm;
+			}
+			else if (elements.elementAt(i).equals("Application Number")) {
+				data[i] = applicationNumber;
+			}
 		}
 		/*
 		data[0] = number;
