@@ -26,7 +26,7 @@ public class Class {
 
 		searchURL = "http://www.freepatentsonline.com/result.html?p=1&srch=xprtsrch&query_txt=" + classID.replaceAll("/", "%2F") + "&uspat=on&usapp=on&eupat=on&pct=on&date_range=all&stemming=on&sort=relevance&search=Search";	
 		
-		System.out.println(searchURL);
+		//System.out.println(searchURL);
 		
 		URL url;
 		InputStream is = null;

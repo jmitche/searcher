@@ -170,8 +170,8 @@ public class Menu extends JFrame {
 			tableHeaders.add("#");
 			tableHeaders.add("Title");
 			tableHeaders.add("Abstract");
-			tableHeaders.add("Claims");
-			tableHeaders.add("Description");
+			//tableHeaders.add("Claims");
+			//tableHeaders.add("Description");
 			tableHeaders.add("Inventors");
 			
 			for (int i = 0; i < patentListColumnNamesMaster.length; i++) {
@@ -292,37 +292,29 @@ public class Menu extends JFrame {
 							
 						}
 			    	});
-			    	
-			    	
-			    	
-			    	
 
-			    	
 			    	if (e.isPopupTrigger()) {
 			    		popup.show(e.getComponent(), e.getX(), e.getY());
 			    		
 			    	}
-			        //int r = table.rowAtPoint(e.getPoint());
-			        //if (r >= 0 && r < table.getRowCount()) {
-			        //    table.setRowSelectionInterval(r, r);
-			        //} else {
-			        //    table.clearSelection();
-			        //}
-
-			        //int rowindex = table.getSelectedRow();
-			        //if (rowindex < 0)
-			        //    return;
-			        //if (e.isPopupTrigger() && e.getComponent() instanceof JTable ) {
-			            System.out.println("Click");
-			        	//JPopupMenu popup = createYourPopUp();
-			            //popup.show(e.getComponent(), e.getX(), e.getY());
-			        //}
-			            
-			            
+		
+			        System.out.println("Right Click");
 			    }
 			});
 			
-			//this.revalidate();
+			patentListTable.getTableHeader().addMouseListener(new MouseAdapter() {
+			      @Override
+			      public void mouseClicked(MouseEvent mouseEvent) {
+			        int index = patentListTable.convertColumnIndexToModel(patentListTable.columnAtPoint(mouseEvent.getPoint()));
+			        if (index >= 0) {
+			        	project.sortPatentsBy(patentListTable.getColumnName(index));
+			          //System.out.println("Clicked on column " + index);
+			        	update();
+			        }
+			      };
+			    });
+			
+			this.revalidate();
 			this.repaint();
 		}
 	}

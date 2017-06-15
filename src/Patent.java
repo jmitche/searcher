@@ -13,25 +13,25 @@ import org.jsoup.select.Elements;
 
 public class Patent {
 	URL url;
-	String number;
-	String title;
-	String abstractStr;
-	String inventorsStr;
-	String applicationNumber;
-	String publicationDate;
-	String filingDate;
-	String assignee;
-	String primaryClass;
-	String otherClassesStr;
-	String internationalClassesStr;
-	String eclaClassesStr;
-	String fieldOfSearchStr;
-	String pdfUrlStr;
-	String primaryExaminer;
-	String assistantExaminer;
-	String attorneyAgentOrFirm;
-	String claims;
-	String description;
+	String number = "";
+	String title = "";
+	String abstractStr = "";
+	String inventorsStr = "";
+	String applicationNumber = "";
+	String publicationDate = "";
+	String filingDate = "";
+	String assignee = "";
+	String primaryClass = "";
+	String otherClassesStr = "";
+	String internationalClassesStr = "";
+	String eclaClassesStr = "";
+	String fieldOfSearchStr = "";
+	String pdfUrlStr = "";
+	String primaryExaminer = "";
+	String assistantExaminer = "";
+	String attorneyAgentOrFirm = "";
+	String claims = "";
+	String description = "";
 	
 	
 	
@@ -49,7 +49,7 @@ public class Patent {
 	    
 	    
 		try {
-			//url = new URL(urlString);
+			url = new URL(urlString);
 			//is = url.openStream();  // throws an IOException
 			//br = new BufferedReader(new InputStreamReader(is));
 			Elements elements;
@@ -99,10 +99,18 @@ public class Patent {
 					applicationNumber = eText;
 				}
 				else if (eTitle.equals("Publication Date:")) {
-					publicationDate = eText;
+					String str[] = eText.split("/");
+					String month = str[0];
+					String day = str[1];
+					String year = str[2];
+					publicationDate = year + "/" + month + "/" + day;
 				}
 				else if (eTitle.equals("Filing Date:")) {
-					filingDate = eText;
+					String str[] = eText.split("/");
+					String month = str[0];
+					String day = str[1];
+					String year = str[2];
+					filingDate = year + "/" + month + "/" + day;
 				}
 				else if (eTitle.equals("Assignee:")) {
 					assignee = eText;
@@ -124,7 +132,7 @@ public class Patent {
 				}
 				else if (eTitle.equals("View Patent Images:")) {  // PDF
 					pdfUrlStr = elements2.select("a[href]").attr("abs:href");
-					System.out.println(pdfUrlStr);
+					//System.out.println(pdfUrlStr);
 				}
 				else if (eTitle.equals("Primary Examiner:")) {
 					primaryExaminer = eText;
@@ -142,13 +150,14 @@ public class Patent {
 					description = eText;
 				}
 				
+				
 
 				
 				//System.out.println(eTitle);
 				//System.out.println(eText);
 			}
 			
-			System.out.println(number + ": " + title);
+			//System.out.println(number + ": " + title);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -220,26 +229,10 @@ public class Patent {
 				data[i] = applicationNumber;
 			}
 		}
-		/*
-		data[0] = number;
-		data[1] = title;
-		data[2] = abstractStr;
-		data[3] = inventorsStr;
-		data[4] = applicationNumber;
-		data[5] = publicationDate;
-		data[6] = filingDate;
-		data[7] = assignee;
-		data[8] = primaryClass;
-		data[9] = otherClassesStr;
-		data[10] = internationalClassesStr;
-		data[11] = eclaClassesStr;
-		data[12] = fieldOfSearchStr;
-		data[13] = primaryExaminer;
-		data[14] = assistantExaminer;
-		data[15] = attorneyAgentOrFirm;
-		data[16] = claims;
-		data[17] = description;
-		*/
 		return data;
+	}
+	
+	public String getURL() {
+		return url.toString();
 	}
 }
