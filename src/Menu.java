@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
+import javax.swing.table.TableColumn;
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ItemListener;
 import java.util.Arrays;
@@ -264,57 +265,61 @@ public class Menu extends JFrame {
 			patentListTable.getTableHeader().addMouseListener(new MouseAdapter() {
 			    @Override
 			    public void mouseReleased(MouseEvent e) {
-			    	
-			    	//JMenuItem itemHide = new JMenuItem("Hide");
-			    	//JCheckBox item = new JCheckBox("Title");
-			    	JPopupMenu popup = new JPopupMenu();
-			    	
-			    	for (int i = 0; i < tableHeaderMenuItems.length; i++) {
-			    		popup.add(tableHeaderMenuItems[i]);
+			    	if (e.getButton() == 3) {
+			    		//JMenuItem itemHide = new JMenuItem("Hide");
+				    	//JCheckBox item = new JCheckBox("Title");
+				    	JPopupMenu popup = new JPopupMenu();
+				    	
+				    	for (int i = 0; i < tableHeaderMenuItems.length; i++) {
+				    		popup.add(tableHeaderMenuItems[i]);
+				    	}
+				    	
+				    	popup.addPopupMenuListener(new PopupMenuListener() {
+							@Override
+							public void popupMenuCanceled(PopupMenuEvent e) {
+								update();
+								
+							}
+
+							@Override
+							public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+
+							@Override
+							public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+				    	});
+
+				    	if (e.isPopupTrigger()) {
+				    		popup.show(e.getComponent(), e.getX(), e.getY());
+				    		
+				    	}
+			
+				        System.out.println("Right Click");
 			    	}
-			    	
-			    	popup.addPopupMenuListener(new PopupMenuListener() {
-						@Override
-						public void popupMenuCanceled(PopupMenuEvent e) {
-							update();
-							
-						}
-
-						@Override
-						public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
-							// TODO Auto-generated method stub
-							
-						}
-
-						@Override
-						public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
-							// TODO Auto-generated method stub
-							
-						}
-			    	});
-
-			    	if (e.isPopupTrigger()) {
-			    		popup.show(e.getComponent(), e.getX(), e.getY());
-			    		
+			    	else if (e.getButton() == 1) {
+			    		int index = patentListTable.convertColumnIndexToModel(patentListTable.columnAtPoint(e.getPoint()));
+				        if (index >= 0) {
+				        	project.sortPatentsBy(patentListTable.getColumnName(index));
+				            System.out.println("Left Click");
+				        	update();
+				        }
 			    	}
-		
-			        System.out.println("Right Click");
 			    }
 			});
 			
 			patentListTable.getTableHeader().addMouseListener(new MouseAdapter() {
-			      @Override
-			      public void mouseClicked(MouseEvent mouseEvent) {
-			        int index = patentListTable.convertColumnIndexToModel(patentListTable.columnAtPoint(mouseEvent.getPoint()));
-			        if (index >= 0) {
-			        	project.sortPatentsBy(patentListTable.getColumnName(index));
-			          //System.out.println("Clicked on column " + index);
-			        	update();
-			        }
-			      };
-			    });
+		      @Override
+		      public void mouseClicked(MouseEvent mouseEvent) {
+		        
+		      };
+		    });
 			
-			this.revalidate();
+			//this.revalidate();
 			this.repaint();
 		}
 	}
@@ -333,8 +338,10 @@ public class Menu extends JFrame {
 	private class ClassesPanel extends JPanel {
 		// Variables
 		String[] classListColumnNames = {"Class ID", "Class Name", "# of patents"};
-		
 		Object[][] classListData;
+		
+		
+		
 		
 		
 		// Components
@@ -357,7 +364,20 @@ public class Menu extends JFrame {
 			txtfldNewClassID = new JTextField();
 			txtfldNewClassName = new JTextField();
 			classListTable = new JTable(classListData, classListColumnNames);
-			classListPane = new JScrollPane(classListTable);
+			classListPane = new JScrollPane(classListTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+			
+			classListTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+			
+			TableColumn column = null;
+		    for (int i = 0; i < 3; i++) {
+		        column = table.getColumnModel().getColumn(i);
+		        if (i == 2) {
+		            column.setPreferredWidth(100); //sport column is bigger
+		        } else {
+		            column.setPreferredWidth(50);
+		        }
+		    }
+			
 			btnAddClass = new JButton("Add Class");
 			btnDiscover = new JButton("Discover");
 			
