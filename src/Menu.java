@@ -250,14 +250,30 @@ public class Menu extends JFrame {
 		public void update() {
 			removeAll();
 			
+			// Get patent data from project based on headers of AdvancedTable
+			
+			// update AdvancedTable with current data
+			
+			// add AdvancedTable to panel
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			// Update columnNames from tableHeaders
 			String[] patentListColumnNames = new String[tableHeaders.size()];
 			for (int i = 0; i < tableHeaders.size(); i++) {
 				patentListColumnNames[i] = tableHeaders.elementAt(i);
 			}
-			
+				
 			
 			patentListData = project.getPatentData(tableHeaders);
+			
 			patentListTable = new JTable(patentListData, patentListColumnNames);
 			patentListPane = new JScrollPane(patentListTable);
 			add(patentListPane);
@@ -312,13 +328,6 @@ public class Menu extends JFrame {
 			    }
 			});
 			
-			patentListTable.getTableHeader().addMouseListener(new MouseAdapter() {
-		      @Override
-		      public void mouseClicked(MouseEvent mouseEvent) {
-		        
-		      };
-		    });
-			
 			//this.revalidate();
 			this.repaint();
 		}
@@ -367,6 +376,10 @@ public class Menu extends JFrame {
 			classListPane = new JScrollPane(classListTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 			
 			classListTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+			
+			
+			
+			
 			
 			TableColumn column = null;
 		    for (int i = 0; i < 3; i++) {
